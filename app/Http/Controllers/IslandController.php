@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Island;
+use App\Http\Resources\IslandResource;
 /**
  * @author RowerPulido
  */
 class IslandController extends Controller
 {
-
     public function show($id){
         return Island::find($id)->toArray();
     }
@@ -19,7 +19,7 @@ class IslandController extends Controller
      * @return JSONObject 
      */
     public function status($id){
-        return Island::find($id)->toArray();
+        return new IslandResource(Island::find($id));
     }
     
     /**

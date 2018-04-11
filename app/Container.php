@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\ContainerStatus;
 
 /**
  * @author RowerPulido
@@ -15,16 +16,16 @@ class Container extends Model
     protected $fillable = ['number_on_island','capacity','island_id'];
 
     /**
-     * Return island who belongs the Container
+     * @return island who belongs the Container
      */
     public function island(){
         return $this->belongsTo('App\Island');
     }
 
     /**
-     * REturns the status
+     * @return the status
      */
     public function containerStatus(){
-        return $this->belongsTo('App\ContainerStatus');
+        return $this->hasMany('App\ContainerStatus');
     }
 }

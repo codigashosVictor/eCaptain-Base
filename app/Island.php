@@ -19,4 +19,8 @@ class Island extends Model
     public function containers(){
         return $this->hasMany('App\Container');
     }
+
+    public function containersStatus(){
+        return $this->hasMany('App\ContainerStatus','container_id');
+    }
 }

@@ -10,15 +10,15 @@ use Illuminate\Database\Eloquent\Model;
 class ContainerStatus extends Model
 {
     //
-    private $table = 'containers_status';
+    protected $table = 'containers_status';
 
-    private $fillable = ['actual_weight','container_id','dish_id'];
+    protected $fillable = ['actual_weight','container_id','dish_id'];
 
     /**
      * Returns container
      */
     public function container(){
-        return $this->hasOne('App\Container');
+        return $this->belongsTo('App\Container');
     }
 
     /**
@@ -27,4 +27,5 @@ class ContainerStatus extends Model
     public function dish(){
         return $this->hasOne('App\Dish');
     }
+
 }

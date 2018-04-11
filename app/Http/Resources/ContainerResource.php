@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
+use App\ContainerStatus;
+use Illuminate\Support\Facades\DB;
 
 class ContainerResource extends Resource
 {
@@ -18,7 +20,9 @@ class ContainerResource extends Resource
             'id' => $this->id,
             'number_on_island' => $this->number_on_island,
             'capacity' => $this->capacity,
-            'island' => $this->island
+            'island' => $this->island->id,
+            'actual_status' => ContainerStatus::find(DB::table('containers_status')->where('id','=',$this->id)->orderBy('updated_at','desc')->first()->id),
+            'last_status' => $this->containerStatus,
         ];
     }
 }
