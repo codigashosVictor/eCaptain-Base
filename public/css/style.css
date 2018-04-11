@@ -1,3 +1,13 @@
 .navbar_top_numActuales{
-    height: 6pc;
+    margin-bottom: 15px;
+    height: Auto;
+}  
+h1{
+    font-family: sans-serif;
+    font-size: 2pc;
+} 
+.up-arrow{
+    font-size: 4pc; 
+    padding: 3px; 
+    color: #77b40D
 }
