@@ -16,3 +16,26 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'v1'], function()
+{
+    Route::group(['prefix' => 'island'], function()
+    {
+        Route::get('{id}','IslandController@show');
+        Route::get('status/{id}', 'IslandController@status');
+        Route::post('add','IslandController@store');
+        Route::post('update','IslandController@update');
+        Route::resource('/','IslandController');
+    });
+
+    Route::group(['prefix' => 'container'], function()
+    {
+        //Route::get('{id}','ContainerController@show');
+        //Route::get('status/{id}', 'ContainerController@status');
+        //Route::post('add','ContainerController@store');
+        //Route::post('update','ContainerController@update');
+    });
+
+    Route::resource('containerstatus','ContainerStatusController');
+    
+});
