@@ -3,9 +3,10 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
-use App\Island;
 use App\Http\Resources\ContainersStatusResource;
 use Illuminate\Support\Facades\DB;
+use App\Island;
+use App\Container;
 
 class IslandResource extends Resource
 {
@@ -46,6 +47,6 @@ class IslandResource extends Resource
      * @return COntainerStatus
      */
     public static function nearToEnd($islandId){
-        
+        //'actual_status' => ContainerStatus::find(DB::table('containers_status')->where('id','=',$this->id)->orderBy('updated_at','desc')->first()->id),
     }
 }
